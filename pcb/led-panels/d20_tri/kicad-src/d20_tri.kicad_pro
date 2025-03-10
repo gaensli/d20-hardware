@@ -8,7 +8,7 @@
         "copper_text_size_h": 1.5,
         "copper_text_size_v": 1.5,
         "copper_text_thickness": 0.3,
-        "copper_text_upright": true,
+        "copper_text_upright": false,
         "courtyard_line_width": 0.049999999999999996,
         "dimension_precision": 4,
         "dimension_units": 3,
@@ -26,38 +26,33 @@
         "fab_text_size_v": 1.0,
         "fab_text_thickness": 0.15,
         "fab_text_upright": false,
-        "other_line_width": 0.15,
+        "other_line_width": 0.09999999999999999,
         "other_text_italic": false,
         "other_text_size_h": 1.0,
         "other_text_size_v": 1.0,
         "other_text_thickness": 0.15,
-        "other_text_upright": true,
+        "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.0,
+          "height": 1.0,
+          "width": 0.3
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
         "silk_text_size_h": 1.0,
         "silk_text_size_v": 1.0,
         "silk_text_thickness": 0.15,
-        "silk_text_upright": true,
+        "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.508
+          "min_clearance": 0.15
         }
       },
-      "diff_pair_dimensions": [
-        {
-          "gap": 0.25,
-          "via_gap": 0.25,
-          "width": 0.2
-        }
-      ],
+      "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "meta": {
-        "version": 1
+        "filename": "board_design_settings.json",
+        "version": 2
       },
       "rule_severities": {
         "annular_width": "error",
@@ -69,6 +64,7 @@
         "drill_out_of_range": "error",
         "duplicate_footprints": "warning",
         "extra_footprint": "warning",
+        "footprint_type_mismatch": "error",
         "hole_clearance": "error",
         "hole_near_hole": "error",
         "invalid_outline": "error",
@@ -84,9 +80,10 @@
         "padstack": "error",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_over_copper": "error",
-        "silk_overlap": "error",
+        "silk_over_copper": "warning",
+        "silk_overlap": "warning",
         "skew_out_of_range": "error",
+        "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
         "track_dangling": "warning",
         "track_width": "error",
@@ -105,23 +102,19 @@
         "max_error": 0.005,
         "min_clearance": 0.0,
         "min_copper_edge_clearance": 0.075,
-        "min_hole_clearance": 0.0,
-        "min_hole_to_hole": 0.19999999999999998,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
         "min_microvia_drill": 0.09999999999999999,
         "min_silk_clearance": 0.0,
         "min_through_hole_diameter": 0.19999999999999998,
         "min_track_width": 0.1143,
         "min_via_annular_width": 0.049999999999999996,
-        "min_via_annulus": 0.049999999999999996,
         "min_via_diameter": 0.44999999999999996,
-        "solder_mask_clearance": 0.0254,
-        "solder_mask_min_width": 0.0,
-        "solder_paste_clearance": 0.0,
-        "solder_paste_margin_ratio": -0.0
+        "use_height_for_length_calcs": true
       },
       "track_widths": [
-        0.1143,
+        0.0,
         0.127,
         0.127,
         0.15,
@@ -133,8 +126,8 @@
       ],
       "via_dimensions": [
         {
-          "diameter": 0.46,
-          "drill": 0.2
+          "diameter": 0.0,
+          "drill": 0.0
         },
         {
           "diameter": 0.46,
@@ -159,7 +152,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "panel_32x32_1515_r0.1.kicad_pro",
+    "filename": "d20_tri_r1.0.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -183,7 +176,7 @@
       }
     ],
     "meta": {
-      "version": 0
+      "version": 2
     },
     "net_colors": null
   },
@@ -191,7 +184,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "test_design.net",
+      "netlist": "d20_tri_r1.0_sch.net",
       "specctra_dsn": "",
       "step": "",
       "vmrl": "",

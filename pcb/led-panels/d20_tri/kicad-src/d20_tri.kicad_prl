@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 31,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_nets": [],
@@ -38,7 +38,6 @@
       9,
       10,
       11,
-      12,
       13,
       14,
       15,
@@ -53,20 +52,20 @@
       24,
       25,
       26,
-      27,
-      28,
-      29,
-      30,
-      31,
+      32,
+      33,
+      34,
+      35,
+      36,
       37,
       38
     ],
-    "visible_layers": "00276ff_80000007",
-    "zone_display_mode": 0
+    "visible_layers": "0027eff_80000007",
+    "zone_display_mode": 1
   },
   "meta": {
-    "filename": "panel_32x32_1515_r0.1.kicad_prl",
-    "version": 2
+    "filename": "d20_tri_r1.0.kicad_prl",
+    "version": 3
   },
   "project": {
     "files": []
