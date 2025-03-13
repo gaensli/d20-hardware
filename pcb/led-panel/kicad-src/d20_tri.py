@@ -3,11 +3,10 @@
 
 from skidl import *
 from string import ascii_uppercase
-import subprocess
 import csv
 
 # Create LED RGB Matrix
-class matrix():
+class CreateMatrix:
     def __init__(self, x, y, device):
         self.leds = device(x*y)
         self.col_r = [Net(f'colr_{i}') for i in range(y)]
@@ -17,9 +16,8 @@ class matrix():
 
         for r in range(y):
             for c in range(x):
-
                 # On triangular board we remove a triangular section of LEDs from the logical 
-                # square matrix arangement, This aids in routing the mess on a 4L board with 
+                # square matrix arrangement, this aids in routing the mess on a 4L board with
                 # through holes.
                 if c >= (15 - r):
                     default_circuit.parts.remove(self.leds[r*x + c])
@@ -29,12 +27,9 @@ class matrix():
                 self.leds[r*x + c][1] += self.row[r]
 
 def d20_generate_design():
-    #===============================================================================
-    # Component templates.
-    #===============================================================================
-
+    # Component templates
     shift = Part('74xx', '74HC595', dest=TEMPLATE, footprint='Led_Panel:TSSOP-16_slim')
-    shift.fields['pn'] = '74HC595PW\,118'
+    shift.fields['pn'] = '74HC595PW\\,118'
     shift.fields['mfg'] = 'Texas Instruments'
     shift.fields['pn_alt0'] = 'HC595 (TSSOP-16)'
     shift.fields['mfg_alt0'] = 'Various'
@@ -68,46 +63,42 @@ def d20_generate_design():
 
     vcc, gnd = Net('vcc', drive=POWER), Net('gnd', drive=POWER)
 
-    # input connecions
+    # input connections
     sclk_in, latch_in, blank_in, data_in = Net('sclk_i'), Net('latch_i'), Net('blank_i'), Net('dat_i')
     sclk, latch, blank, data = Net('sclk'), Net('latch'), Net('blank'), Net('dat')
 
-    #output connections
+    # output connections
     data_out = Net('dat_out')
 
-    #===============================================================================
-    # Component instantiations.
-    #===============================================================================
-
+    # Component instantiations
     bypass = cap(3, value='470nF', pn='CC0402KRX5R6BB474', mfg='Yageo')
     for c in bypass:
         c[1,2] += vcc, gnd
 
-    inputConnector = conn(value='input')
-    outputConnector = conn(value='output')
+    input_connector = conn(value='input')
+    output_connector = conn(value='output')
 
+    input_connector[1] & vcc
+    input_connector[2] & data_in
+    input_connector[3] & blank_in
+    input_connector[4] & latch_in
+    input_connector[5] & sclk_in
+    input_connector[6] & gnd
+    input_connector['Shield'] & gnd
 
-    inputConnector[1] & vcc
-    inputConnector[2] & data_in
-    inputConnector[3] & blank_in
-    inputConnector[4] & latch_in
-    inputConnector[5] & sclk_in
-    inputConnector[6] & gnd
-    inputConnector['Shield'] & gnd
-
-    outputConnector[1] & vcc
-    outputConnector[2] & data_out
-    outputConnector[3] & blank
-    outputConnector[4] & latch
-    outputConnector[5] & sclk
-    outputConnector[6] & gnd
-    outputConnector['Shield'] & gnd
+    output_connector[1] & vcc
+    output_connector[2] & data_out
+    output_connector[3] & blank
+    output_connector[4] & latch
+    output_connector[5] & sclk
+    output_connector[6] & gnd
+    output_connector['Shield'] & gnd
     
     # Matrix Size 
     x = 16
     y = 15
 
-    array = matrix(x,y, rgb)
+    array = CreateMatrix(x, y, rgb)
     drivers = tlc59025(3)
 
     row_driver = shift(2)
@@ -119,7 +110,7 @@ def d20_generate_design():
         {'r':'7.5k',  'pn':'RC0402FR-077K5L',  'mfg':'Yageo'},
         {'r':'4.12k', 'pn':'RC0402FR-074K12L', 'mfg':'Yageo'}]
     i_set = res(3)
-    for r,d,v in zip(i_set,drivers, values):
+    for r, d, v in zip(i_set, drivers, values):
         r.value = v['r']
         r.pn = v['pn']
         r.mfg = v['mfg']
@@ -185,18 +176,18 @@ def d20_generate_design():
     inputBuffers[1]['Y1'] & sclk 
 
 def generate_bom(file):
-    parts = []
-    netlist = ''
+
     def equal_dicts(d1, d2, ignore_keys):
         d1_filtered = {k:v for k,v in d1.items() if k not in ignore_keys}
         d2_filtered = {k:v for k,v in d2.items() if k not in ignore_keys}
         return d1_filtered == d2_filtered
+
     def get_unique(part):
         unique_parts = []
         for p in parts:
             skip = False
             for _p in unique_parts:
-                if equal_dicts(p,_p,('ref', 'value')):
+                if equal_dicts(p, _p, ('ref', 'value')):
                     _p['ref'] += p['ref']
                     skip = True
                     break
@@ -212,18 +203,18 @@ def generate_bom(file):
     def bom_line(self):
         return {
             'ref': [self.ref],
-            'value':self.value_str, 
+            'value':self.value,
             'name':self.name, 
             'pn': getattr(self, 'pn', ''),
             'mfg': getattr(self, 'mfg', ''),
             'pn_alt0': getattr(self, 'pn_alt0', ''),
             'mfg_alt0': getattr(self, 'mfg_alt0', ''),
         }
-        
+
+    parts = []
     for p in default_circuit.parts:
         _p = bom_line(p)
         parts += [_p]
-
 
     u = get_unique(parts)
     with open(file, 'w') as csvfile:
@@ -231,16 +222,9 @@ def generate_bom(file):
         writer.writeheader()
         writer.writerows(u)
 
-    
-
-#===============================================================================
-# Instantiate the circuit and generate the netlist.
-#===============================================================================
 
 if __name__ == "__main__":
     d20_generate_design()
     ERC()
     generate_netlist()
-    
-    # Create a BOM
-    generate_bom('../Production/d20_tri_r1.0.csv')
+    generate_bom('../production/d20_tri.csv')
