@@ -152,7 +152,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "d20_tri_r1.0.kicad_pro",
+    "filename": "d20_tri.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -184,7 +184,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "d20_tri_r1.0_sch.net",
+      "netlist": "d20_tri.net",
       "specctra_dsn": "",
       "step": "",
       "vmrl": "",
