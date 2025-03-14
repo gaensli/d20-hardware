@@ -1,19 +1,19 @@
 {
     "lib_search_paths": {
-        "kicad": [
+        "kicad8": [
             ".",
-            "/usr/share/kicad/symbols",
-            "../../../lib"
+            "../../lib",
+            "/usr/share/kicad/symbols"
         ],
         "spice": [
             "."
         ]
     },
     "footprint_search_paths": {
-        "kicad": [
+        "kicad8": [
             ".",
-            "/usr/share/kicad/footprints",
-            "../../../lib"
+            "../../lib",
+            "/usr/share/kicad/footprints"
         ],
         "skidl": [
             "."
@@ -22,5 +22,5 @@
             "."
         ]
     },
-    "default_tool": "kicad"
+    "default_tool": "kicad8"
 }
