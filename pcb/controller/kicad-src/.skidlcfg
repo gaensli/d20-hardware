@@ -1,23 +1,22 @@
 {
     "lib_search_paths": {
-        "kicad": [
+        "kicad8": [
             ".",
-            "/usr/share/kicad/library",
-            "../../lib/gkl"
+            "../../lib",
+            "/usr/share/kicad/library"
         ],
         "skidl": [
-            ".",
-            "/home/greg/projects/skidl/skidl/libs"
+            "."
         ],
         "spice": [
             "."
         ]
     },
     "footprint_search_paths": {
-        "kicad": [
+        "kicad8": [
             ".",
-            "/usr/share/kicad/modules",
-            "../../lib/gkl"
+            "../../lib",
+            "/usr/share/kicad/modules"
         ],
         "skidl": [
             "."
