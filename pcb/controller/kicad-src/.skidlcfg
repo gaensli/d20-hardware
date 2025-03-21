@@ -1,0 +1,29 @@
+{
+    "lib_search_paths": {
+        "kicad8": [
+            ".",
+            "../../lib",
+            "/usr/share/kicad/library"
+        ],
+        "skidl": [
+            "."
+        ],
+        "spice": [
+            "."
+        ]
+    },
+    "footprint_search_paths": {
+        "kicad8": [
+            ".",
+            "../../lib",
+            "/usr/share/kicad/modules"
+        ],
+        "skidl": [
+            "."
+        ],
+        "spice": [
+            "."
+        ]
+    },
+    "default_tool": "kicad"
+}

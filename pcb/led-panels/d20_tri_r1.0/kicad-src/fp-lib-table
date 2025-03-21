@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name "Led_Panel")(type "KiCad")(uri "${KIPRJMOD}/../../../lib/Led_Panel.pretty")(options "")(descr ""))
-)
