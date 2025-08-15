@@ -8,12 +8,12 @@
     "high_contrast_mode": 0,
     "net_color_mode": 1,
     "opacity": {
-      "images": 0.6,
-      "pads": 0.7300000190734863,
-      "shapes": 1.0,
-      "tracks": 0.5600000023841858,
-      "vias": 0.47999998927116394,
-      "zones": 1.0
+      "images": 0.3700000047683716,
+      "pads": 0.3100000023841858,
+      "shapes": 0.3400000035762787,
+      "tracks": 0.30000001192092896,
+      "vias": 0.30000001192092896,
+      "zones": 0.3499999940395355
     },
     "ratsnest_display_mode": 0,
     "selection_filter": {
@@ -31,22 +31,20 @@
     },
     "visible_items": [
       "vias",
-      "footprint_text",
       "ratsnest",
       "footprints_front",
       "footprints_back",
-      "footprint_values",
-      "footprint_references",
       "tracks",
       "drc_errors",
+      "bitmaps",
       "pads",
       "zones",
       "drc_warnings",
       "drc_exclusions",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_00027ef5_02000055",
-    "zone_display_mode": 1
+    "visible_layers": "00000000_00000000_00000008_02800001",
+    "zone_display_mode": 0
   },
   "git": {
     "repo_type": "",
